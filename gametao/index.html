@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game淘-热门游戏折扣与游戏资讯精选平台</title>
+    <meta name="description" content="game淘为玩家提供最新游戏折扣、热门游戏推荐、游戏资讯、免费游戏领取及游戏社区互动，帮助您发现值得玩的游戏，畅享游戏乐趣。">
+    <meta name="keywords" content="game淘,游戏折扣,游戏资讯,游戏推荐,免费游戏,游戏社区,游戏攻略">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: #f5f7fa;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .site-header {
+            background-color: #1a1e2e;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            flex-wrap: wrap;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            background: linear-gradient(135deg, #f97316, #f59e0b);
+            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #fff;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
+        }
+        .logo-text {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .logo-text span {
+            color: #f97316;
+        }
+        .main-nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        .main-nav a {
+            color: #cbd5e1;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+            padding: 6px 0;
+        }
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: #f97316;
+        }
+        .main-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #f97316;
+            border-radius: 3px;
+        }
+        .header-search {
+            display: flex;
+            align-items: center;
+            background-color: #2a2f42;
+            border-radius: 30px;
+            padding: 4px 8px;
+            border: 1px solid #3b4258;
+        }
+        .header-search input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #e2e8f0;
+            padding: 8px 12px;
+            font-size: 14px;
+            width: 180px;
+        }
+        .header-search input::placeholder {
+            color: #7c869c;
+        }
+        .header-search button {
+            background: #f97316;
+            border: none;
+            color: white;
+            border-radius: 30px;
+            padding: 6px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .header-search button:hover {
+            background: #ea580c;
+        }
+
+        /* Main hero */
+        .hero {
+            background: linear-gradient(145deg, #1a1e2e 0%, #2d1b3d 60%, #3b2150 100%);
+            padding: 60px 0 70px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.2) 0%, transparent 60%);
+            top: -150px;
+            right: -100px;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 60%);
+            bottom: -150px;
+            left: -100px;
+        }
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(249, 115, 22, 0.2);
+            color: #fdba74;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(249, 115, 22, 0.4);
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            letter-spacing: -0.5px;
+        }
+        .hero h1 span {
+            color: #f97316;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #b8c0d4;
+            margin-bottom: 30px;
+            max-width: 540px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #f97316;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.3);
+        }
+        .btn-primary:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #e2e8f0;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: #f97316;
+        }
+        .stat-label {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        /* Section generic */
+        .section {
+            padding: 60px 0;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 36px;
+        }
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #111827;
+            position: relative;
+            padding-left: 18px;
+            line-height: 1.3;
+        }
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 6px;
+            height: 28px;
+            background: linear-gradient(180deg, #f97316, #f59e0b);
+            border-radius: 4px;
+        }
+        .section-link {
+            color: #f97316;
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: gap 0.2s;
+        }
+        .section-link:hover {
+            gap: 8px;
+        }
+
+        /* Game cards */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .game-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .game-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+        .game-thumbnail {
+            height: 200px;
+            background: linear-gradient(145deg, #3b4258, #2a2f42);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .game-thumbnail .glyph {
+            font-size: 64px;
+            opacity: 0.3;
+            color: #f97316;
+        }
+        .game-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #f97316;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .game-badge.free {
+            background: #10b981;
+        }
+        .game-badge.hot {
+            background: #ef4444;
+        }
+        .game-badge.new {
+            background: #3b82f6;
+        }
+        .game-info {
+            padding: 18px;
+        }
+        .game-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #111827;
+        }
+        .game-category {
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .game-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f3f4f6;
+            padding-top: 12px;
+            margin-top: 8px;
+        }
+        .game-price {
+            font-weight: 700;
+            color: #f97316;
+            font-size: 18px;
+        }
+        .game-price .original {
+            text-decoration: line-through;
+            color: #9ca3af;
+            font-weight: 400;
+            font-size: 14px;
+            margin-left: 6px;
+        }
+        .game-rating {
+            color: #f59e0b;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Free games section */
+        .free-section {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            padding: 60px 0;
+            color: white;
+        }
+        .free-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .free-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            transition: background 0.2s;
+        }
+        .free-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .free-card .icon {
+            font-size: 36px;
+            margin-bottom: 14px;
+        }
+        .free-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .free-card p {
+            color: #a3b0c2;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        .free-card .btn-small {
+            background: #f97316;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+        .free-card .btn-small:hover {
+            background: #ea580c;
+        }
+
+        /* Info section */
+        .info-section {
+            background: #fff;
+            padding: 60px 0;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 0.8fr;
+            gap: 40px;
+        }
+        .info-block {
+            padding: 10px 0;
+        }
+        .info-block h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-block h3 .icon {
+            color: #f97316;
+            font-size: 24px;
+        }
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .news-item {
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-item h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 4px;
+            transition: color 0.2s;
+        }
+        .news-item h4:hover {
+            color: #f97316;
+        }
+        .news-date {
+            font-size: 13px;
+            color: #9ca3af;
+        }
+        .trending-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .trending-item {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+        .trending-rank {
+            font-size: 28px;
+            font-weight: 800;
+            color: #e5e7eb;
+            width: 40px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .trending-item:nth-child(1) .trending-rank {
+            color: #f97316;
+        }
+        .trending-item:nth-child(2) .trending-rank {
+            color: #f59e0b;
+        }
+        .trending-item:nth-child(3) .trending-rank {
+            color: #3b82f6;
+        }
+        .trending-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: #1f2937;
+        }
+        .trending-price {
+            font-size: 14px;
+            color: #f97316;
+        }
+        .guide-card {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        .guide-card h4 {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .guide-card p {
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        /* FAQ */
+        .faq-section {
+            background: #f9fafb;
+            padding: 60px 0;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        .faq-item h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #111827;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .faq-item h3 .q-mark {
+            color: #f97316;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        .faq-item p {
+            color: #4b5563;
+            font-size: 15px;
+            padding-left: 24px;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(90deg, #f97316, #f59e0b);
+            padding: 50px 0;
+            text-align: center;
+            color: white;
+        }
+        .cta-section h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 28px;
+            opacity: 0.9;
+        }
+        .cta-button {
+            background: #111827;
+            color: white;
+            padding: 14px 40px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 18px;
+            display: inline-block;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            background: #1f2937;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #111827;
+            color: #9ca3af;
+            padding: 50px 0 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            color: #f3f4f6;
+            font-size: 16px;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        .footer-col a {
+            display: block;
+            color: #9ca3af;
+            font-size: 14px;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: #f97316;
+        }
+        .footer-bottom {
+            border-top: 1px solid #1f2937;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .footer-bottom a {
+            color: #f97316;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .game-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .free-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 14px;
+                padding: 12px 0;
+            }
+            .main-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 16px;
+            }
+            .header-search {
+                width: 100%;
+            }
+            .header-search input {
+                flex: 1;
+                width: auto;
+            }
+            .hero {
+                padding: 40px 0;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero-inner {
+                flex-direction: column;
+            }
+            .game-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .free-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 24px;
+            }
+            .cta-section h2 {
+                font-size: 26px;
+            }
+        }
+        @media (max-width: 480px) {
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-primary,
+            .btn-outline {
+                text-align: center;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo">
+                <div class="logo-icon">淘</div>
+                <div class="logo-text">game<span>淘</span></div>
+            </div>
+            <nav class="main-nav">
+                <a href="#" class="active">首页</a>
+                <a href="#">游戏折扣</a>
+                <a href="#">免费游戏</a>
+                <a href="#">资讯</a>
+                <a href="#">排行榜</a>
+                <a href="#">社区</a>
+            </nav>
+            <div class="header-search">
+                <input type="text" placeholder="搜索游戏、资讯...">
+                <button type="button">搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <div class="hero-badge">🔥 每日更新 值得信赖</div>
+                    <h1>发现好游戏<br>就上 <span>game淘</span></h1>
+                    <p>精选全球热门游戏折扣与资讯，为您淘出最值得玩的游戏。每天更新折扣信息、免费领取活动与游戏攻略，让游戏选择不再纠结。</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn-primary">浏览今日折扣</a>
+                        <a href="#" class="btn-outline">查看免费游戏</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">收录游戏</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">120+</div>
+                            <div class="stat-label">今日折扣</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">30万+</div>
+                            <div class="stat-label">玩家推荐</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="flex: 0.8; min-width: 280px; background: rgba(255,255,255,0.05); border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="font-size: 18px; font-weight: 700; margin-bottom: 16px; color: #fdba74;">🎮 本周热门游戏</div>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 10px;">
+                            <span>艾尔登法环 黄金树</span>
+                            <span style="color: #f97316; font-weight: 700;">-35%</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 10px;">
+                            <span>赛博朋克 2077</span>
+                            <span style="color: #f97316; font-weight: 700;">-50%</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 10px;">
+                            <span>双人成行</span>
+                            <span style="color: #10b981; font-weight: 700;">免费领</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 10px;">
+                            <span>博德之门 3</span>
+                            <span style="color: #f97316; font-weight: 700;">-20%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门折扣 -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">今日热门折扣</h2>
+                    <a href="#" class="section-link">查看更多 →</a>
+                </div>
+                <div class="game-grid">
+                    <div class="game-card">
+                        <div class="game-thumbnail">
+                            <div class="glyph">🎮</div>
+                            <span class="game-badge hot">热门</span>
+                        </div>
+                        <div class="game-info">
+                            <div class="game-title">黑神话：悟空</div>
+                            <div class="game-category"><span>动作RPG</span><span>好评 96%</span></div>
+                            <div class="game-meta">
+                                <div class="game-price">¥228 <span class="original">¥268</span></div>
+                                <div class="game-rating">-15%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-thumbnail">
+                            <div class="glyph">⚔️</div>
+                            <span class="game-badge">折扣</span>
+                        </div>
+                        <div class="game-info">
+                            <div class="game-title">荒野大镖客 2</div>
+                            <div class="game-category"><span>开放世界</span><span>好评 93%</span></div>
+                            <div class="game-meta">
+                                <div class="game-price">¥149 <span class="original">¥249</span></div>
+                                <div class="game-rating">-40%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-thumbnail">
+                            <div class="glyph">🏆</div>
+                            <span class="game-badge new">新游</span>
+                        </div>
+                        <div class="game-info">
+                            <div class="game-title">最终幻想 16</div>
+                            <div class="game-category"><span>JRPG</span><span>好评 89%</span></div>
+                            <div class="game-meta">
+                                <div class="game-price">¥299 <span class="original">¥399</span></div>
+                                <div class="game-rating">-25%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-thumbnail">
+                            <div class="glyph">🛡️</div>
+                            <span class="game-badge">折扣</span>
+                        </div>
+                        <div class="game-info">
+                            <div class="game-title">只狼：影逝二度</div>
+                            <div class="game-category"><span>动作</span><span>好评 91%</span></div>
+                            <div class="game-meta">
+                                <div class="game-price">¥134 <span class="original">¥268</span></div>
+                                <div class="game-rating">-50%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 免费游戏 -->
+        <section class="free-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" style="color: white;">本周免费领取</h2>
+                    <a href="#" class="section-link">全部免费游戏 →</a>
+                </div>
+                <div class="free-grid">
+                    <div class="free-card">
+                        <div class="icon">🎁</div>
+                        <h3>双人成行</h3>
+                        <p>合作冒险游戏神作，与朋友或伴侣一起体验奇妙旅程。限时免费领取，错过不再有！</p>
+                        <a href="#" class="btn-small">立即领取</a>
+                    </div>
+                    <div class="free-card">
+                        <div class="icon">🕹️</div>
+                        <h3>文明 6</h3>
+                        <p>经典策略游戏，打造你的文明帝国。本周 Epic 平台免费领取，永久入库。</p>
+                        <a href="#" class="btn-small">立即领取</a>
+                    </div>
+                    <div class="free-card">
+                        <div class="icon">👾</div>
+                        <h3>死亡细胞</h3>
+                        <p>Roguelike 动作游戏，爽快战斗体验。免费领取活动正在进行中，速来！</p>
+                        <a href="#" class="btn-small">立即领取</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 资讯与榜单 -->
+        <section class="info-section">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-block">
+                        <h3><span class="icon">📰</span> 最新游戏资讯</h3>
+                        <div class="news-list">
+                            <div class="news-item">
+                                <h4>《黑神话：悟空》DLC 开发中？官方团队透露新计划</h4>
+                                <div class="news-date">2025-01-15</div>
+                            </div>
+                            <div class="news-item">
+                                <h4>Steam 冬季特卖正式开启，多款大作迎来历史最低价</h4>
+                                <div class="news-date">2025-01-14</div>
+                            </div>
+                            <div class="news-item">
+                                <h4>《GTA 6》新预告片播放量破亿，玩家期待热度空前</h4>
+                                <div class="news-date">2025-01-13</div>
+                            </div>
+                            <div class="news-item">
+                                <h4>国产独立游戏《风来之国》销量突破百万，好评如潮</h4>
+                                <div class="news-date">2025-01-12</div>
+                            </div>
+                            <div class="news-item">
+                                <h4>PlayStation 新一期会员免费游戏阵容公布</h4>
+                                <div class="news-date">2025-01-11</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-block">
+                        <h3><span class="icon">🏅</span> 热销排行榜</h3>
+                        <div class="trending-list">
+                            <div class="trending-item">
+                                <div class="trending-rank">1</div>
+                                <div>
+                                    <div class="trending-title">幻兽帕鲁</div>
+                                    <div class="trending-price">¥98</div>
+                                </div>
+                            </div>
+                            <div class="trending-item">
+                                <div class="trending-rank">2</div>
+                                <div>
+                                    <div class="trending-title">艾尔登法环</div>
+                                    <div class="trending-price">¥198</div>
+                                </div>
+                            </div>
+                            <div class="trending-item">
+                                <div class="trending-rank">3</div>
+                                <div>
+                                    <div class="trending-title">博德之门 3</div>
+                                    <div class="trending-price">¥238</div>
+                                </div>
+                            </div>
+                            <div class="trending-item">
+                                <div class="trending-rank">4</div>
+                                <div>
+                                    <div class="trending-title">使命召唤 20</div>
+                                    <div class="trending-price">¥246</div>
+                                </div>
+                            </div>
+                            <div class="trending-item">
+                                <div class="trending-rank">5</div>
+                                <div>
+                                    <div class="trending-title">怪物猎人：荒野</div>
+                                    <div class="trending-price">¥368</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-block">
+                        <h3><span class="icon">💡</span> 购游指南</h3>
+                        <div class="guide-card">
+                            <h4>🛒 如何买到最低价游戏？</h4>
+                            <p>关注 key 比价网站，设置愿望单提醒，等待季节性促销。game淘每日汇总各平台折扣，帮您一键淘到好价。</p>
+                        </div>
+                        <div class="guide-card">
+                            <h4>🎯 如何选择适合自己的游戏？</h4>
+                            <p>根据游戏类型偏好、配置要求、玩家评价综合判断。game淘提供筛选与推荐，让选择更简单。</p>
+                        </div>
+                        <div class="guide-card">
+                            <h4>📢 免费游戏领取注意事项</h4>
+                            <p>注意领取时间限制和平台要求，免费领取的游戏通常永久入库，但部分需要特定平台客户端。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">常见问题解答</h2>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3><span class="q-mark">Q</span> game淘是什么网站？</h3>
+                        <p>game淘是一个专注于游戏折扣、免费游戏和游戏资讯的聚合平台。我们每天从各大游戏平台收集折扣信息，帮助玩家发现值得购买的游戏。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><span class="q-mark">Q</span> 游戏折扣信息多久更新一次？</h3>
+                        <p>我们的折扣信息每日更新，覆盖 Steam、Epic、PlayStation、Xbox 等多个主流平台。重大促销期间（如夏促、冬促）会实时更新。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><span class="q-mark">Q</span> 免费领取的游戏是正版吗？</h3>
+                        <p>是的，game淘推荐的免费游戏均来自官方平台的合法活动，领取后永久入库，与购买的游戏享有相同权益。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><span class="q-mark">Q</span> 如何快速找到心仪的游戏折扣？</h3>
+                        <p>您可以使用站内搜索功能，输入游戏名称查找。也可以按分类浏览，或关注每日折扣推荐列表，不错过任何好价。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>开启你的淘游戏之旅</h2>
+                <p>每天都有新折扣，每周都有免费游戏，加入 game淘 玩家社区，与同好分享游戏乐趣</p>
+                <a href="#" class="cta-button">立即注册体验</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>game淘</h4>
+                    <a href="#">关于我们</a>
+                    <a href="#">联系我们</a>
+                    <a href="#">加入我们</a>
+                    <a href="#">合作伙伴</a>
+                </div>
+                <div class="footer-col">
+                    <h4>游戏分类</h4>
+                    <a href="#">动作冒险</a>
+                    <a href="#">角色扮演</a>
+                    <a href="#">策略模拟</a>
+                    <a href="#">独立游戏</a>
+                    <a href="#">多人联机</a>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <a href="#">今日折扣</a>
+                    <a href="#">免费游戏</a>
+                    <a href="#">游戏资讯</a>
+                    <a href="#">排行榜</a>
+                    <a href="#">游戏社区</a>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助支持</h4>
+                    <a href="#">帮助中心</a>
+                    <a href="#">常见问题</a>
+                    <a href="#">隐私政策</a>
+                    <a href="#">服务条款</a>
+                    <a href="#">反馈建议</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 game淘 版权所有 京ICP备00000000号</span>
+                <span>联系邮箱：support@gametao.com</span>
+            </div>
+        </div>
+    </footer>
+</body>
+                      </html>
